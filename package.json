@@ -1,0 +1,15 @@
+{
+  "name": "api-sandbox",
+  "version": "1.0.0",
+  "description": "A project to experiment with API architecture",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.15.2",
+    "mongodb": "^2.2.26"
+  }
+}
