@@ -13,4 +13,14 @@ router.get('/', (req, res) => {
     });
 });
 
+router.post('/', (req, res) => {
+  dal.createComment(req.body)
+    .then(comment => {
+      res.status(201).send(comment);
+    })
+    .catch(error => {
+      res.status(500).send({error: 'Could not create comment'});
+    });
+});
+
 module.exports = router;
