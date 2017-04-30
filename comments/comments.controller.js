@@ -23,4 +23,19 @@ router.post('/', (req, res) => {
     });
 });
 
+router.get('/:id', (req, res) => {
+  dal.getComment(req.params.id)
+    .then(comment => {
+      if (!comment) {
+        res.status(404).send();
+      }
+      else {
+        res.send(comment);
+      }
+    })
+    .catch(error => {
+      res.status(500).send({error: 'Error retrieving comment'});
+    });
+});
+
 module.exports = router;
