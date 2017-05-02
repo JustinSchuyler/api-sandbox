@@ -24,4 +24,10 @@ api.getComment = (id) => {
     : Promise.resolve();
 };
 
+api.deleteComment = (id) => {
+  return (/[a-f0-9]{24}/.test(id))
+    ? comments.deleteOne({_id: new ObjectId(id)})
+    : Promise.reject(400);
+};
+
 module.exports = api;

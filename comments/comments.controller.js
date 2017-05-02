@@ -38,4 +38,24 @@ router.get('/:id', (req, res) => {
     });
 });
 
+router.delete('/:id', (req, res) => {
+  dal.deleteComment(req.params.id)
+    .then(result => {
+      if (result.deletedCount) {
+        res.send({message: req.params.id + ' was deleted'});
+      }
+      else {
+        res.status(410).send({message: req.params.id + ' does not exist'});
+      }
+    })
+    .catch(error => {
+      if (error === 400) {
+        res.status(400).send({message: req.params.id + ' is not a valid item id'});
+      }
+      else {
+        res.status(500).send({error: 'Error deleting comment'});
+      }
+    });
+});
+
 module.exports = router;
